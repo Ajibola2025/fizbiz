@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+
+@theme inline {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-soft: var(--soft);
+  --color-fg: var(--text);
+  --color-mut: var(--mut);
+  --color-line: var(--line);
+  --color-lime: var(--lime);
+  --color-ink: var(--ink);
+  --color-on-ink: var(--on-ink);
+  --color-bar: var(--bar);
+  --color-foot: var(--foot);
+}
+
+/* Light theme (default) */
+:root {
+  --bg: #efefef; --card: #fff; --soft: #f4f4f4; --text: #161816; --mut: #6b706c;
+  --line: #e2e3e2; --lime: #a8e02b; --ink: #161816; --on-ink: #fff; --bar: #cfcfcf; --foot: #e6e6e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b0d0c; --card: #151816; --soft: #1c201d; --text: #f2f4f2; --mut: #98a09a;
+    --line: #262b28; --ink: #f2f4f2; --on-ink: #0b0d0c; --bar: #3a403c; --foot: #101311;
+  }
+}
+
+/* Dark theme chosen with the ◐ button */
+:root[data-theme='dark'] {
+  --bg: #0b0d0c; --card: #151816; --soft: #1c201d; --text: #f2f4f2; --mut: #98a09a;
+  --line: #262b28; --ink: #f2f4f2; --on-ink: #0b0d0c; --bar: #3a403c; --foot: #101311;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-bg font-sans text-base text-fg antialiased; }
+
+@layer components {
+  .w { @apply mx-auto max-w-[1200px] px-5; }
+  .btn { @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-transparent bg-ink px-7 py-3.5 text-[15px] font-medium text-on-ink transition-transform active:scale-[.97]; }
+  .btn-lime { @apply bg-lime text-[#161816]; }
+  .btn-out { @apply border-fg bg-card text-fg; }
+  .tag { @apply mb-3.5 inline-block rounded-full border border-line bg-card px-3.5 py-1 text-xs; }
+  .panel { @apply rounded-[18px] border border-line bg-card p-5; }
+}
